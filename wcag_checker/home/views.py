@@ -1,3 +1,10 @@
 from django.shortcuts import render
 
-# Create your views here.
+from .models import checkRequest
+
+
+def requestView(request):
+
+    context = {}
+    
+    return render(request, 'home.html', context)
