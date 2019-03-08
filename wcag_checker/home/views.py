@@ -1,31 +1,39 @@
 from django.shortcuts import render
 
-from .models import checkRequest, URLForm
+from .models import URLForm
 from utils.compliance_checker import checkSite
+
+def resultView(request, standing):
+
+    context = standing
+        
+    return render(request, 'results.html', context)
 
 def requestView(request):
 
     context = {}
 
-    # if this is a POST request we need to process the form data
+    # Process form if it is a post
     if request.method == 'POST':
 
-        # create a form instance and populate it with data from the request:
+        # Create a form and populate it with the request data
         form = URLForm(request.POST)
         
-        # check whether it's valid:
         if form.is_valid():
-            print('Valid form')
             websiteURL = form.cleaned_data['url']
 
+            print('Valid form')
+            
             print(websiteURL)
             siteStanding = checkSite(websiteURL)
             print(siteStanding)
 
-            context['form'] = URLForm() 
-            return render(request, 'home.html', context)
+            #context['form'] = URLForm() 
+            #return render(request, 'home.html', context)
 
-    else:
-        context['form'] = URLForm() 
+            return resultView(request, siteStanding)
+
+    
+    context['form'] = URLForm() 
         
     return render(request, 'home.html', context)
