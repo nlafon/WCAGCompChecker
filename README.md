@@ -12,6 +12,8 @@ To run this project, navigate to "\WCAGCompChecker\wcag_checker" and run:
 python manage.py runserver
 ```
 
+To use the program go to: **http://127.0.0.1:8000/home** in your browser
+
 
 [pipenv]: <https://pipenv.readthedocs.io/en/latest/install/#installing-pipenv>
 [wcag]: <https://www.w3.org/WAI/standards-guidelines/wcag/>
