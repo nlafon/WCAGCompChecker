@@ -45,10 +45,11 @@ python manage.py runserver
 
 To use the program go to: **http://127.0.0.1:8000/home** in your browser
 
-# TODO
-- Make alt txt violation src image attribute absolute (add src website url so image render of results view)
-- Fix red rectangle on results page. It's a image with constant size and needs to be more dynamic
-- Make our own site complient with WCAG
+# High Priority TODO:
+- Make alt txt violation src image attribute URL absolute (jinja can’t render images without complete URL)
+- Fix red rectangle on results page. It's an image with constant size and needs to be more dynamic as the results could be any length.
+- Make our own site compliant with WCAG.
+- Make results view render pretty.
 
 [pipenv]: <https://pipenv.readthedocs.io/en/latest/install/#installing-pipenv>
 [wcag]: <https://www.w3.org/WAI/standards-guidelines/wcag/>
