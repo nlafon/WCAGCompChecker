@@ -6,8 +6,8 @@ from utils.compliance_checker import checkSite
 def resultView(request, standing):
 
     context = standing
-        
-    return render(request, 'results.html', context)
+    
+    return render(request, 'resultsTest.html', context)
 
 def requestView(request):
 
@@ -26,14 +26,14 @@ def requestView(request):
             
             print(websiteURL)
             siteStanding = checkSite(websiteURL)
-            print(siteStanding)
-
-            #context['form'] = URLForm() 
-            #return render(request, 'home.html', context)
+            
+            # TODO: look further into why
+            # Converts to string because jinja won't convert and render for some reason ¯\_(ツ)_/¯
+            siteStanding['alt_text_violations'] = [alt_text_violation.__str__ for alt_text_violation in siteStanding['alt_text_violations']]
 
             return resultView(request, siteStanding)
 
     
     context['form'] = URLForm() 
         
-    return render(request, 'home.html', context)
+    return render(request, 'homeTest.html', context)

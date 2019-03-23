@@ -1,20 +1,28 @@
 <!DOCTYPE html>
+
+{% extends "base.html" %}
+
+{% block title %}WCAG Compliance Checker | Results{% endblock %}
+
 <html>
 
-<head>
+{% block head %}
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <!-- PAGE settings -->
   <link rel="icon" href="https://templates.pingendo.com/assets/Pingendo_favicon.ico">
-  <title>WCAG Compliance Checker | Results</title>
   <meta name="description" content="Wireframe design of a cover page by Pingendo">
   <meta name="keywords" content="Pingendo bootstrap example template wireframe cover">
   <meta name="author" content="Pingendo">
-  <!-- CSS dependencies -->
+  
+  <!-- LOAD STATIC CSS dependencies -->
+  {% load static %}
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css" type="text/css">
-  <link rel="stylesheet" href="wireframe.css">
-</head>
+  <link rel="stylesheet" href="{{ STATIC_URL }} /templates/wireframe.css">
+  
+{% endblock %}
 
+{% block content %}
 <body class="text-center bg-dark">
   <nav class="navbar navbar-expand-md bg-warning navbar-light">
     <div class="container">
@@ -23,7 +31,7 @@
       <div class="collapse navbar-collapse text-center justify-content-end" id="navbar2SupportedContent">
         <ul class="navbar-nav">
           <li class="nav-item">
-            <a class="nav-link active" href="#"><b>Home</b></a>
+            <a class="nav-link active" href="/home"><b>Home</b></a>
           </li>
           <li class="nav-item">
             <a class="nav-link" href="#"><b>The Team</b></a>
@@ -38,20 +46,38 @@
   <div class="bg-warning py-0" style="">
     <div class="container">
       <div class="row">
-        <div class="col-md-12"><img class="img-fluid d-block" src="assets/images/WCAG Compliance Checker.png" height="4"></div>
+        <div class="col-md-12"><img class="img-fluid d-block" src="{% static "assets/images/WCAG Compliance Checker.png" %}" height="4"></div>
       </div>
     </div>
   </div>
-  <div class="text-center border-left shadow py-2" style="	background-image: url(assets/images/merge-pattern.png);	background-position: right bottom;	background-size: cover;	background-repeat: repeat;	background-attachment: fixed;">
+  <div class="text-center border-left shadow py-2" style="	background-image: url({% static "assets/images/merge-pattern.png" %});	background-position: right bottom;	background-size: cover;	background-repeat: repeat;	background-attachment: fixed;">
     <div class="container">
       <div class="row">
         <div class="col-md-12">
-          <h1 class="text-center">Searching Website:</h1>
+          <h1 class="text-center">Website Results:</h1>
           <div class="form-group"><label></label><input type="search" class="form-control shadow-sm" id="form6" name="Url placeholder"></div>
         </div>
       </div>
       <div class="row">
-        <div class="col-md-12"><img class="d-block img-fluid w-100 shadow-none" src="assets/images/RectangleRed.png"></div>
+        <div class="col-md-12">
+		
+		<div class="d-block img-fluid w-100 shadow-none" style="background-image: url({% static "assets/images/RectangleRed.png" %});">
+  
+			<!--img class="d-block img-fluid w-100 shadow-none" src="{% static "assets/images/RectangleRed.png" %}" -->
+		
+			<!-- Results go here -->
+			
+			<h1 class="text-center">Violations: {{ violations }}</h1>
+			
+			{% for violation in alt_text_violations %}
+					
+					<li>{{ violation |safe }}</li>
+					
+			{% endfor %}
+		
+		</div>
+		
+		</div>
       </div>
       <div class="row">
       </div>
@@ -60,7 +86,9 @@
   <div class="py-5">
     <div class="container">
       <div class="row">
-        <div class="col-md-12"><a class="btn btn-warning text-body shadow" href="#" contenteditable="true">Go Back</a></div>
+        <div class="col-md-12">
+		<a class="btn btn-warning text-body shadow" href="/home">Go Back</a>
+		</div>
       </div>
     </div>
   </div>
@@ -71,26 +99,14 @@
           <p style="" class="">The University of Oklahoma<br>Human Computer Interaction - Spring 2019</p>
         </div>
       </div>
-      <div class="row">
-        <div class="col-md-12 d-flex align-items-center justify-content-center my-3"> <a href="#">
-            <i class="d-block fa fa-facebook-official text-muted fa-lg mr-2"></i>
-          </a> <a href="#">
-            <i class="d-block fa fa-instagram text-muted fa-lg mx-2"></i>
-          </a> <a href="#">
-            <i class="d-block fa fa-google-plus-official text-muted fa-lg mx-2"></i>
-          </a> <a href="#">
-            <i class="d-block fa fa-pinterest-p text-muted fa-lg mx-2"></i>
-          </a> <a href="#">
-            <i class="d-block fa fa-reddit text-muted fa-lg mx-2"></i>
-          </a> <a href="#">
-            <i class="d-block fa fa-twitter text-muted fa-lg ml-2"></i>
-          </a> </div>
-      </div>
+
     </div>
   </div>
   <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js" integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49" crossorigin="anonymous"></script>
   <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js" integrity="sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy" crossorigin="anonymous" style=""></script>
 </body>
+</body>
+{% endblock %}
 
 </html>

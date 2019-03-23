@@ -1,20 +1,29 @@
 <!DOCTYPE html>
+
+{% extends "base.html" %}
+
+{% block title %}WCAG Compliance Checker | Home{% endblock %}
+
 <html>
 
-<head>
+{% block head %}
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <!-- PAGE settings -->
   <link rel="icon" href="https://templates.pingendo.com/assets/Pingendo_favicon.ico">
-  <title>WCAG Compliance Checker | Home </title>
   <meta name="description" content="Wireframe design of a cover page by Pingendo">
   <meta name="keywords" content="Pingendo bootstrap example template wireframe cover">
   <meta name="author" content="Pingendo">
-  <!-- CSS dependencies -->
+  
+  
+  <!-- LOAD STATIC CSS dependencies -->
+  {% load static %}
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css" type="text/css">
-  <link rel="stylesheet" href="wireframe.css">
-</head>
+  <link rel="stylesheet" href="{{ STATIC_URL }} /templates/wireframe.css">
+{% endblock %}
 
+
+{% block content %}
 <body class="text-center bg-dark">
   <nav class="navbar navbar-expand-md bg-warning navbar-light shadow-none">
     <div class="container">
@@ -23,7 +32,7 @@
       <div class="collapse navbar-collapse text-center justify-content-end" id="navbar2SupportedContent">
         <ul class="navbar-nav">
           <li class="nav-item">
-            <a class="nav-link active" href="#"><b>Home</b></a>
+            <a class="nav-link active" href="/home"><b>Home</b></a>
           </li>
           <li class="nav-item">
             <a class="nav-link" href="#"><b>The Team</b></a>
@@ -38,15 +47,21 @@
   <div class="bg-warning py-0" style="">
     <div class="container">
       <div class="row">
-        <div class="col-md-12"><img class="img-fluid d-block" src="assets/images/WCAG Compliance Checker.png" height="4"></div>
+        <div class="col-md-12"><img class="img-fluid d-block" src="{% static "assets/images/WCAG Compliance Checker.png" %}" height="4"></div>
+		
+		<!-- div class="col-md-12"><img class="img-fluid d-block" src="assets/images/WCAG Compliance Checker.png" height="4"></div -->
+		
       </div>
     </div>
   </div>
-  <div class="text-center border-left shadow py-2" style="	background-image: url(assets/images/merge-pattern.png);	background-position: right bottom;	background-size: cover;	background-repeat: repeat;	background-attachment: fixed;">
-    <div class="container">
+  
+  <!-- LOAD IMG -->
+  <div class="text-center border-left shadow py-2" style="	background-image: url({% static "assets/images/merge-pattern.png" %});	background-position: right bottom;	background-size: cover;	background-repeat: repeat;	background-attachment: fixed;">
+    
+	<div class="container">
       <div class="row">
         <div class="bg-white p-4 mx-auto mx-md-0 col-lg-6 col-7 shadow rounded rounded-left rounded-right rounded-top rounded-bottom border-0" style="">
-          <img class="img-fluid d-block mx-auto pt-2" src="assets/images/768px-Globe_icon.svg.png" width="45" height="45">
+          <img class="img-fluid d-block mx-auto pt-2" src="{% static "assets/images/768px-Globe_icon.svg.png" %}" width="45" height="45">
           <p class="mb-4 text-dark"><br>The Web Content Accessibility Guidelines are part of a series of web accessibility guidelines published by the Web Accessibility Initiative of the World Wide Web Consortium, the main international standards organization for the Internet. The goal of this application is to check requested websites for potential violations.&nbsp;</p>
           <form class="form-inline d-flex justify-content-center">
             <div class="input-group">
@@ -56,7 +71,9 @@
         </div>
         <div class="col-md-6 m-0 ml-0 d-flex" style="">
           <div class="embed-responsive embed-responsive-16by9" style="">
-            <iframe src="https://www.youtube.com/watch?v=20SHvU2PKsM" allowfullscreen="" class="embed-responsive-item"></iframe>
+		  
+			<!-- LOAD Iframe -->
+			<iframe width="560" height="315" src="https://www.youtube.com/embed/20SHvU2PKsM" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
           </div>
         </div>
       </div>
@@ -71,12 +88,19 @@
       </div>
       <div class="row">
         <div class="col-md-12">
-          <div class="form-group"><input type="search" class="form-control shadow-sm" id="form6" name="Url placeholder"></div>
-        </div>
-      </div>
-      <div class="row">
-        <div class="col-md-12"><a class="btn btn-warning text-body shadow" href="#">Check WCAG Compliance</a></div>
-      </div>
+		<!-- Website URL form -->
+		
+		<div class="form-group">
+			<form method="post">
+				{% csrf_token %}
+				
+				{{ form }}
+				
+				<br>
+				<input class="btn btn-warning text-body shadow" type="submit" value="Check WCAG Compliance">
+			</form>
+		</div>
+	  
     </div>
   </div>
   <div class="py-3" style="">
@@ -86,26 +110,14 @@
           <p style="" class="">The University of Oklahoma<br>Human Computer Interaction - Spring 2019</p>
         </div>
       </div>
-      <div class="row">
-        <div class="col-md-12 d-flex align-items-center justify-content-center my-3"> <a href="#">
-            <i class="d-block fa fa-facebook-official text-muted fa-lg mr-2"></i>
-          </a> <a href="#">
-            <i class="d-block fa fa-instagram text-muted fa-lg mx-2"></i>
-          </a> <a href="#">
-            <i class="d-block fa fa-google-plus-official text-muted fa-lg mx-2"></i>
-          </a> <a href="#">
-            <i class="d-block fa fa-pinterest-p text-muted fa-lg mx-2"></i>
-          </a> <a href="#">
-            <i class="d-block fa fa-reddit text-muted fa-lg mx-2"></i>
-          </a> <a href="#">
-            <i class="d-block fa fa-twitter text-muted fa-lg ml-2"></i>
-          </a> </div>
-      </div>
     </div>
   </div>
+  
+  <!-- What are these scripts for? -->
   <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js" integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49" crossorigin="anonymous"></script>
   <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js" integrity="sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy" crossorigin="anonymous" style=""></script>
-</body>
 
+</body>
+{% endblock %}
 </html>

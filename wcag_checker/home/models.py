@@ -2,4 +2,4 @@
 from django import forms
 
 class URLForm(forms.Form):
-    url = forms.CharField(label='Website to check', max_length=3000)
+    url = forms.CharField(label='', max_length=3000, widget=forms.TextInput(attrs={'class': "form-control shadow-sm"}))
