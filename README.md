@@ -46,7 +46,7 @@ python manage.py runserver
 To use the program go to: **http://127.0.0.1:8000/home** in your browser
 
 # High Priority TODO:
-- Make alt txt violation src image attribute URL absolute (jinja can’t render images without complete URL)
+- Make alt txt violation src image attribute URL not relative to site being tested. Or add the image url to the return dict. (jinja can’t render images without complete URL and adding code to the template to do it is a bad idea)
 - Fix red rectangle on results page. It's an image with constant size and needs to be more dynamic as the results could be any length.
 - Make our own site compliant with WCAG.
 - Make results view render pretty.
