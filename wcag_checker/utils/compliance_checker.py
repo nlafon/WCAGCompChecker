@@ -1,6 +1,7 @@
 
 import requests
 from bs4 import BeautifulSoup
+from urllib.parse import urljoin
 
 def checkSite(url):
     '''
@@ -27,9 +28,17 @@ def checkSite(url):
     alt_text_violations = []
     for img in soup.find_all('img'):
         if not img.find('alt'):
-            img['style'] = 'border: 5px solid red;' # mark it up in soup
-            alt_text_violations.append(img)
+            abs_img_url = urljoin(url,img['src'])
+            alt_text_violations.append((img,abs_img_url))
             violations += 1
+    # in case we want to display marked up versions
+    marked_up_alt_text_violations = []
+    for img in soup.find_all('img'):
+        if not img.find('alt'):
+            abs_img_url = urljoin(url,img['src'])
+            img['src'] = abs_img_url
+            img['style'] = 'border: 5px solid red;' # mark it up in soup
+            marked_up_alt_text_violations.append(img)
 
     # TODO: find other violations...
 
@@ -39,16 +48,17 @@ def checkSite(url):
         'url': url,
         'soup': soup, # this will have injected styling but may look bad!
         'alt_text_violations': alt_text_violations,
+        'marked_up_alt_text_violations': marked_up_alt_text_violations,
         'webRenderCode': '',
         }
     
     return results
 
 if __name__ == '__main__':
-    results = checkSite('http://www.cs.ou.edu/~cgrant/')
+    results = checkSite('https://johnalberse.com/sketchbook.html')
     print('url: ' + str(results['url']))
     print("Violations: " + str(results['violations']))
     print("Warnings: " + str(results['warnings']))
     print("No alt text in elements: ")
-    for e in results['alt_text_violations']:
+    for e in results['marked_up_alt_text_violations']:
         print(e)
