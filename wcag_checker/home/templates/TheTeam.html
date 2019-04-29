@@ -1,32 +1,41 @@
 <!DOCTYPE html>
+
+{% extends "base.html" %}
+
+{% block title %}WCAG Compliance Checker | Home{% endblock %}
+
 <html>
 
-<head>
+{% block head %}
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <!-- PAGE settings -->
   <link rel="icon" href="https://templates.pingendo.com/assets/Pingendo_favicon.ico">
-  <title>Cover</title>
   <meta name="description" content="Wireframe design of a cover page by Pingendo">
   <meta name="keywords" content="Pingendo bootstrap example template wireframe cover">
   <meta name="author" content="Pingendo">
-  <!-- CSS dependencies -->
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css" type="text/css">
-  <link rel="stylesheet" href="wireframe.css">
-</head>
 
+
+  <!-- LOAD STATIC CSS dependencies -->
+  {% load static %}
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css" type="text/css">
+  <link rel="stylesheet" href="{{ STATIC_URL }} /templates/wireframe.css">
+{% endblock %}
+
+
+{% block content %}
 <body class="text-center bg-dark">
-  <nav class="navbar navbar-expand-md bg-warning navbar-light">
+  <nav class="navbar navbar-expand-md bg-warning navbar-light shadow-none">
     <div class="container">
       <button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse" data-target="#navbar2SupportedContent" aria-controls="navbar2SupportedContent" aria-expanded="false" aria-label="Toggle navigation">
         <span class="navbar-toggler-icon"></span> </button>
       <div class="collapse navbar-collapse text-center justify-content-end" id="navbar2SupportedContent">
         <ul class="navbar-nav">
           <li class="nav-item">
-            <a class="nav-link disabled" target="_blank" href="home.html"><b>Home</b></a>
+            <a class="nav-link active" href="/home"><b>Home</b></a>
           </li>
           <li class="nav-item">
-            <a class="nav-link active" href="#"><b>The Team</b></a>
+            <a class="nav-link" href="TheTeam.html"><b>The Team</b></a>
           </li>
           <li class="nav-item">
             <a class="nav-link" href="#"><b>About</b></a>
@@ -38,43 +47,60 @@
   <div class="bg-warning py-0" style="">
     <div class="container">
       <div class="row">
-        <div class="col-md-12"><img class="img-fluid d-block" src="assets/images/WCAG Compliance Checker.png" height="4"></div>
+        <div class="col-md-12"><img class="img-fluid d-block" src="{% static "assets/images/WCAG Compliance Checker.png" %}" height="4" alt="WCAG Checker Logo"></div>
+
+		<!-- div class="col-md-12"><img class="img-fluid d-block" src="assets/images/WCAG Compliance Checker.png" height="4"></div -->
+
       </div>
     </div>
   </div>
-  <div class="py-5 text-center">
+
+  <!-- LOAD IMG -->
+  <div class="text-center border-left shadow py-2" alt="Black and gray background for website" style="	background-image: url({% static "assets/images/merge-pattern.png" %});	background-position: right bottom;	background-size: cover;	background-repeat: repeat;	background-attachment: fixed;">
+
+	<div class="container">
+      <div class="row">
+        <div class="bg-white p-4 mx-auto mx-md-0 col-lg-6 col-7 shadow rounded rounded-left rounded-right rounded-top rounded-bottom border-0" style="">
+          <img class="img-fluid d-block mx-auto pt-2" src="{% static "assets/images/768px-Globe_icon.svg.png" %}" width="45" height="45" alt="Globe Icon to symbolize universal accessibility">
+          <p class="mb-4 text-dark"><br>The Web Content Accessibility Guidelines are part of a series of web accessibility guidelines published by the Web Accessibility Initiative of the World Wide Web Consortium, the main international standards organization for the Internet. The goal of this application is to check requested websites for potential violations.&nbsp;</p>
+          <form class="form-inline d-flex justify-content-center">
+            <div class="input-group">
+              <div class="input-group-append"> </div>
+            </div>
+          </form>
+        </div>
+        <div class="col-md-6 m-0 ml-0 d-flex" style="">
+          <div class="embed-responsive embed-responsive-16by9" style="">
+
+			<!-- LOAD Iframe -->
+			<iframe width="560" height="315" src="https://www.youtube.com/embed/20SHvU2PKsM" alt="Youtube Video explaining what WCAG is about" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="py-5">
     <div class="container">
       <div class="row">
-        <div class="mx-auto col-md-12">
-          <h1 class="mb-3">About the Team</h1>
+        <div class="col-md-12">
+          <h1 class="text-center">Enter website url here:</h1>
         </div>
       </div>
       <div class="row">
-        <div class="col-lg-4 col-6 p-4"> <img class="d-block mb-3 mx-auto rounded-circle img-fluid" src="assets/images/IMG_9140.JPG" width="300" alt="Card image cap" height="300">
-          <h4> <b>Imra Maududi</b></h4>
-          <p class="mb-0">Project Planner</p>
-        </div>
-        <div class="col-lg-4 col-6 p-4" style=""> <img class="img-fluid d-block mb-3 mx-auto rounded-circle" src="assets/images/IMG_9160.JPG" width="300
-300
-300" alt="Card image cap">
-          <h4> <b>Lisa Egede</b></h4>
-          <p class="mb-0">Front End Developer</p>
-        </div>
-        <div class="col-lg-4 col-6 p-4"> <img class="img-fluid d-block mb-3 mx-auto rounded-circle" src="assets/images/IMG_9147.JPG" width="300">
-          <h4> <b>Noah La Fon</b></h4>
-          <p class="mb-0">Back End Developer</p>
-        </div>
-      </div>
-      <div class="row d-flex justify-content-center">
-        <div class="col-lg-6 col-6 p-4"> <img class="img-fluid d-block mb-3 mx-auto rounded-circle" src="assets/images/IMG_9153.JPG" width="300" alt="Card image cap">
-          <h4> <b>Steven Traitor Tucker</b></h4>
-          <p class="mb-0" contenteditable="true">Moral Support</p>
-        </div>
-        <div class="col-lg-6 col-6 p-4"> <img class="img-fluid d-block mb-3 mx-auto rounded-circle" src="assets/images/IMG_9144.JPG" width="300" height="300">
-          <h4> <b>John Fake Alberse</b></h4>
-          <p class="mb-0" contenteditable="true">Back End Developer</p>
-        </div>
-      </div>
+        <div class="col-md-12">
+		<!-- Website URL form -->
+
+		<div class="form-group">
+			<form method="post">
+				{% csrf_token %}
+
+				{{ form }}
+
+				<br>
+				<input class="btn btn-warning text-body shadow" type="submit" value="Check WCAG Compliance">
+			</form>
+		</div>
+
     </div>
   </div>
   <div class="py-3" style="">
@@ -86,9 +112,12 @@
       </div>
     </div>
   </div>
+
+  <!-- What are these scripts for? -->
   <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js" integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49" crossorigin="anonymous"></script>
   <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js" integrity="sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy" crossorigin="anonymous" style=""></script>
-</body>
 
+</body>
+{% endblock %}
 </html>
