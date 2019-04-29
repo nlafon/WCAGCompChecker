@@ -14,8 +14,8 @@
   <meta name="description" content="Wireframe design of a cover page by Pingendo">
   <meta name="keywords" content="Pingendo bootstrap example template wireframe cover">
   <meta name="author" content="Pingendo">
-  
-  
+
+
   <!-- LOAD STATIC CSS dependencies -->
   {% load static %}
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css" type="text/css">
@@ -35,7 +35,7 @@
             <a class="nav-link active" href="/home"><b>Home</b></a>
           </li>
           <li class="nav-item">
-            <a class="nav-link" href="#"><b>The Team</b></a>
+            <a class="nav-link" href="TheTeam.html"><b>The Team</b></a>
           </li>
           <li class="nav-item">
             <a class="nav-link" href="#"><b>About</b></a>
@@ -48,16 +48,16 @@
     <div class="container">
       <div class="row">
         <div class="col-md-12"><img class="img-fluid d-block" src="{% static "assets/images/WCAG Compliance Checker.png" %}" height="4" alt="WCAG Checker Logo"></div>
-		
+
 		<!-- div class="col-md-12"><img class="img-fluid d-block" src="assets/images/WCAG Compliance Checker.png" height="4"></div -->
-		
+
       </div>
     </div>
   </div>
-  
+
   <!-- LOAD IMG -->
   <div class="text-center border-left shadow py-2" alt="Black and gray background for website" style="	background-image: url({% static "assets/images/merge-pattern.png" %});	background-position: right bottom;	background-size: cover;	background-repeat: repeat;	background-attachment: fixed;">
-    
+
 	<div class="container">
       <div class="row">
         <div class="bg-white p-4 mx-auto mx-md-0 col-lg-6 col-7 shadow rounded rounded-left rounded-right rounded-top rounded-bottom border-0" style="">
@@ -71,7 +71,7 @@
         </div>
         <div class="col-md-6 m-0 ml-0 d-flex" style="">
           <div class="embed-responsive embed-responsive-16by9" style="">
-		  
+
 			<!-- LOAD Iframe -->
 			<iframe width="560" height="315" src="https://www.youtube.com/embed/20SHvU2PKsM" alt="Youtube Video explaining what WCAG is about" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
           </div>
@@ -89,18 +89,18 @@
       <div class="row">
         <div class="col-md-12">
 		<!-- Website URL form -->
-		
+
 		<div class="form-group">
 			<form method="post">
 				{% csrf_token %}
-				
+
 				{{ form }}
-				
+
 				<br>
 				<input class="btn btn-warning text-body shadow" type="submit" value="Check WCAG Compliance">
 			</form>
 		</div>
-	  
+
     </div>
   </div>
   <div class="py-3" style="">
@@ -112,7 +112,7 @@
       </div>
     </div>
   </div>
-  
+
   <!-- What are these scripts for? -->
   <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js" integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49" crossorigin="anonymous"></script>
