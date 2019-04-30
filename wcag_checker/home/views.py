@@ -9,6 +9,12 @@ def resultView(request, standing):
     
     return render(request, 'resultsTest.html', context)
 
+def teamView(request):
+
+    context = {}
+    
+    return render(request, 'TheTeam.html', context)
+
 def requestView(request):
 
     context = {}
